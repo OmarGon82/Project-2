@@ -16,10 +16,10 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
-const studentList = document.getElementsByClassName('student-list');
-const studentsPerPage = 1;
+const studentList = document.getElementsByClassName("student-item cf");
+const studentsPerPage = 10;
 
-
+console.log(studentList);
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
@@ -34,9 +34,10 @@ const studentsPerPage = 1;
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
+
 const showPage = (list, page) => {
     const startIndex = (page * 10) - 10;
-    const endIndex = page * 10   ;
+    const endIndex = page * 10;
     for(let i = 0; i < list.length; i ++){
        let li = list[i]
        if(li >= startIndex && li <= endIndex) {
@@ -46,8 +47,7 @@ const showPage = (list, page) => {
        }
     }
 }
-
-showPage(studentList,studentsPerPage);
+showPage(studentList,1);
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
