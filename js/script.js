@@ -19,7 +19,7 @@ FSJS project 2 - List Filter and Pagination
 const studentList = document.getElementsByClassName("student-item cf");
 const studentsPerPage = 10;
 
-console.log(studentList);
+
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
@@ -47,7 +47,7 @@ const showPage = (list, page) => {
        }
     }
 }
-showPage(studentList,1);
+showPage(studentList,3);
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
