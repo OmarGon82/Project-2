@@ -59,6 +59,8 @@ const appendPageLinks = (list) => {
    const div = document.createElement('div');
    div.className = 'pagination';
    pageDiv.appendChild(div);
+   const ul = document.createElement('ul');
+   div.appendChild(ul);
 
    return neededPages;
 }
