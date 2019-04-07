@@ -61,8 +61,8 @@ const appendPageLinks = (list) => {
    pageDiv.appendChild(div);
    const ul = document.createElement('ul');
    div.appendChild(ul);
-   for( i = 0; i <= neededPages; i = i + 1 ){
-      const li = document.createElement( 'li' );               
+   for( i = 0; i <= studentsPerPage; i = i + 1 ){
+      const li = document.createElement( 'li' );            
       li.textContent = "<a href=#>" + list[i];               
       ul.appendChild( li );                           
     }
