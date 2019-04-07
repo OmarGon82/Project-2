@@ -36,8 +36,8 @@ const studentsPerPage = 10;
 ***/
 
 const showPage = (list, page) => {
-    const startIndex = (page * 10) - 10;
-    const endIndex = page * 10;
+    const startIndex = (page * studentsPerPage) - studentsPerPage;
+    const endIndex = page * studentsPerPage;
     for(let i = 0; i < list.length; i ++){
        let li = list[i]
        if(li >= startIndex && li <= endIndex) {
@@ -47,7 +47,7 @@ const showPage = (list, page) => {
        }
     }
 }
-showPage(studentList,3);
+showPage(studentList,5);
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
