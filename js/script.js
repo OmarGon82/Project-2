@@ -36,18 +36,18 @@ const studentsPerPage = 10;
 ***/
 
 const showPage = (list, page) => {
-    const startIndex = (page * studentsPerPage) - studentsPerPage;
-    const endIndex = page * studentsPerPage;
-    for(let i = 0; i < list.length; i ++){
-       let li = list[i]
-       if(li >= startIndex && li <= endIndex) {
-          list.style.display = '';
-       } else {
-          list.style.display = 'none';
-       }
-    }
+   const startIndex = (page * studentsPerPage) - studentsPerPage;
+   const endIndex = page * studentsPerPage;
+   for(let i = 0; i < list.length; i ++){
+      let li = list[i]
+      if(li >= startIndex && li <= endIndex) {
+         list[i].style.display = 'block';
+      } else {
+         list[i].style.display = 'none';
+      }
+   }
 }
-//showPage(studentList,5);
+
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
@@ -61,7 +61,7 @@ const appendPageLinks = (list) => {
    pageDiv.appendChild(div);
    const ul = document.createElement('ul');
    div.appendChild(ul);
-   for( i = 0; i < neededPages; i += 1 ){
+   for( i = 0; i < neededPages; i ++ ){
       const pageNum = i + 1;
       const li = document.createElement('li');
       const a = document.createElement('a');
@@ -69,17 +69,21 @@ const appendPageLinks = (list) => {
       a.setAttribute("href","#");
       a.textContent = pageNum;
       ul.appendChild(li);                           
-      ul.firstChild.className = 'active';
-   } 
-   // ul.addEventListener('click' (e) => {
-   //    if (e.target )
-   // });
-   return neededPages;
-     
-}
-                 
+      li.firstChild.className = 'active';
+      const anchorTag = document.getElementsByTagName('a');
+      for (let i = 0; i < anchorTag.length; i++){
+         anchorTag[i].addEventListener('click', (e) => {
+            alert('it works');
+
+         });
+      }
+      
+   }
+}    
 appendPageLinks(studentList);      
       
+         
+   
       
    
       
