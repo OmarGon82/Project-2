@@ -61,13 +61,16 @@ const appendPageLinks = (list) => {
    pageDiv.appendChild(div);
    const ul = document.createElement('ul');
    div.appendChild(ul);
-   for( i = 0; i < studentsPerPage; i = i + 1 ){
+   for( i = 0; i < neededPages; i += 1 ){
+      const pageNum = i + 1;
       const li = document.createElement( 'li' );            
-      li.textContent = "<a href=#>" + neededPages;               
+      li.innerHTML = "<a href='#'>" + pageNum +"</a>";               
       ul.appendChild( li );                           
     }
    return neededPages;
+      
 }
+      
 
 console.log(appendPageLinks(studentList));
 
