@@ -64,15 +64,17 @@ const appendPageLinks = (list) => {
    for( i = 0; i < neededPages; i += 1 ){
       const pageNum = i + 1;
       const li = document.createElement( 'li' );            
-      li.innerHTML = "<a href='#'>" + pageNum +"</a>";               
+      li.innerHTML = "<a href='#'>" + pageNum +"</a>";
       ul.appendChild( li );                           
-    }
+      ul.firstChild.className = 'active';
+   }
    return neededPages;
-      
+     
 }
-      
+                 
+appendPageLinks(studentList);      
 
-console.log(appendPageLinks(studentList));
+
 
 
 
