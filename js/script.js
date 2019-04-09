@@ -71,10 +71,16 @@ const appendPageLinks = (list) => {
       ul.appendChild(li);                           
       li.firstChild.className = 'active';
       const anchorTag = document.getElementsByTagName('a');
+      
       for (let i = 0; i < anchorTag.length; i++){
          anchorTag[i].addEventListener('click', (e) => {
-            alert('it works');
-
+           const active = e.target;
+           for (let i = 0; i < anchorTag.length ;i++) {
+            if(anchorTag !==null) {
+               active.classList.remove("active");
+            }
+            active.className = "active";
+          }
          });
       }
       
@@ -85,8 +91,8 @@ appendPageLinks(studentList);
          
    
       
-   
-      
+
+
                  
 
 
