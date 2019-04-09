@@ -41,7 +41,7 @@ const showPage = (list, page) => {
    for(let i = 0; i < list.length; i ++){
       let li = list[i]
       if(li >= startIndex && li <= endIndex) {
-         list[i].style.display = 'block';
+         list[i].style.display = '';
       } else {
          list[i].style.display = 'none';
       }
@@ -81,10 +81,13 @@ const appendPageLinks = (list) => {
             }
             active.className = "active";
           }
+          showPage(studentList,pageNum);
          });
+         
       }
       
    }
+   
 }    
 appendPageLinks(studentList);      
       
