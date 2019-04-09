@@ -69,7 +69,7 @@ const appendPageLinks = (list) => {
       a.setAttribute("href","#");
       a.textContent = pageNum;
       ul.appendChild(li);                           
-      li.firstChild.className = 'active';
+      // li.firstChild.className = 'active';
       const anchorTag = document.getElementsByTagName('a');
       
       for (let i = 0; i < anchorTag.length; i++){
