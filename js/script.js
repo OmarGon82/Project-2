@@ -16,10 +16,10 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
+
+
 const studentList = document.getElementsByClassName("student-item cf");
 const studentsPerPage = 10;
-
-
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
@@ -37,13 +37,13 @@ const studentsPerPage = 10;
 
 const showPage = (list, page) => {
    const startIndex = (page * studentsPerPage) - studentsPerPage;
-   const endIndex = page * studentsPerPage;
-   for(let i = 0; i < list.length; i ++){
-      let li = list[i]
-      if(li >= startIndex && li <= endIndex) {
-         list[i].style.display = '';
+   const endIndex = (page * studentsPerPage) -1;
+   studentList.display = 'none';
+   for(let i = 0; i < list.length; i ++) {
+      if(i >= startIndex && i <= endIndex) {
+         list[i].style.display = 'block';
       } else {
-         list[i].style.display = 'none';
+        list[i].style.display = 'none';
       }
    }
 }
@@ -69,9 +69,8 @@ const appendPageLinks = (list) => {
       a.setAttribute("href","#");
       a.textContent = pageNum;
       ul.appendChild(li);                           
-      // li.firstChild.className = 'active';
       const anchorTag = document.getElementsByTagName('a');
-      
+      anchorTag[0].className = 'active';
       for (let i = 0; i < anchorTag.length; i++){
          anchorTag[i].addEventListener('click', (e) => {
            const active = e.target;
@@ -79,16 +78,17 @@ const appendPageLinks = (list) => {
             if(anchorTag !==null) {
                active.classList.remove("active");
             }
-            active.className = "active";
+               active.className = "active";
           }
-          showPage(studentList,pageNum);
+          
          });
          
       }
       
    }
    
-}    
+}
+showPage(studentList,appendPageLinks);    
 appendPageLinks(studentList);      
       
          
