@@ -69,13 +69,14 @@ const appendPageLinks = (list) => {
       a.textContent = pageNum;
       ul.appendChild(li);                           
       const anchorTag = document.getElementsByTagName('a');
-      anchorTag[0].className = 'active';
+      anchorTag.className = 'active';
       for (let i = 0; i < anchorTag.length; i++){
          anchorTag[i].addEventListener('click', (e) => {
            const pageNum = e.target.textContent;
            const active = pageNum;
            for (let i = 0; i < anchorTag.length ;i++) {
             if( anchorTag === 'active') {
+               
                active.classList.remove("active");
             }
                active.className = "active";
