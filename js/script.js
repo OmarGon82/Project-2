@@ -23,7 +23,6 @@ const studentsPerPage = 10;
 /*** 
    Create the `showPage` function to hide all of the items in the 
    list except for the ten you want to show.
-
    Pro Tips: 
      - Keep in mind that with a list of 54 students, the last page 
        will only display four.
@@ -73,22 +72,23 @@ const appendPageLinks = (list) => {
       anchorTag[0].className = 'active';
       for (let i = 0; i < anchorTag.length; i++){
          anchorTag[i].addEventListener('click', (e) => {
-           const active = e.target;
+           const pageNum = e.target.textContent;
+           const active = pageNum;
            for (let i = 0; i < anchorTag.length ;i++) {
-            if(anchorTag !==null) {
+            if( anchorTag === 'active') {
                active.classList.remove("active");
             }
                active.className = "active";
           }
           
+          showPage(studentList,active);
          });
-         
       }
       
    }
    
 }
-showPage(studentList,appendPageLinks);    
+showPage(studentList,1);    
 appendPageLinks(studentList);      
       
          
