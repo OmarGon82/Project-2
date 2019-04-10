@@ -47,11 +47,11 @@ const appendPageLinks = (list) => {
          anchorTag[i].addEventListener('click', (e) => { //assign an click even listener to each anchor tag.
            const pageNum = e.target.textContent;   // put the event.target and its textContent in a constant called pageNum(differnt scope from previous pageNum)
       
-           for (let i = 0; i < li.length ;i++) {  //looped through all the anchor tags.
+           for (let i = 0; i < anchorTag.length ;i++) {  
             
-            if( li[i].className === "active") { 
+            if( anchorTag.className === "active") { 
 
-               pageNum[i].classList.remove("active"); 
+               pageNum.classList.remove("active"); 
             }
               pageNum.className = "active";    
           }
