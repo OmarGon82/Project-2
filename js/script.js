@@ -41,19 +41,19 @@ const appendPageLinks = (list) => {
       a.textContent = pageNum;      //set each anchor to display a page number using the pageNum constant and the textContent of a.
       ul.appendChild(li);          //appended all li's to the unordered list.                 
       const anchorTag = document.getElementsByTagName('a');   // selected the anchor element by its tag name
-      anchorTag.className = 'active';  //set an active class to the to all anchor elements
+      anchorTag[0].className = "active";  //set an active class to the to the first li
       
       for (let i = 0; i < anchorTag.length; i++){  // created a loop to give all anchor tags an event listener.
-         anchorTag[i].addEventListener('click', (e) => { //assing an click even listener to each anchor tag.
+         anchorTag[i].addEventListener('click', (e) => { //assign an click even listener to each anchor tag.
            const pageNum = e.target.textContent;   // put the event.target and its textContent in a constant called pageNum(differnt scope from previous pageNum)
       
-           for (let i = 0; i < anchorTag.length ;i++) {  //looped through all the anchor tags.
+           for (let i = 0; i < li.length ;i++) {  //looped through all the anchor tags.
             
-            if( anchorTag === 'active') { //if the anchor tag has a an active class.
-               
-               pageNum.classList.remove("active"); //the active class is removed
+            if( li[i].className === "active") { 
+
+               pageNum[i].classList.remove("active"); 
             }
-               pageNum.className = "active";    //if there is no active class then it will give assigned the active class.
+              pageNum.className = "active";    
           }
           
           showPage(studentList,pageNum);    //the showpage function is called again inside the event listener with this studentList and the pageNum
@@ -76,4 +76,3 @@ appendPageLinks(studentList);    //finally we call our appendPageLinks function 
 
 
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
