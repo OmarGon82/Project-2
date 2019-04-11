@@ -15,7 +15,7 @@ const showPage = (list, page) => {
    studentList.display = 'none';    //hide all students at the start
    for(let i = 0; i < list.length; i ++) {   //created a loop for this parameter(it will be the studentList const)
       if(i >= startIndex && i <= endIndex) { // if the students index  is between the start and end index
-         list[i].style.display = '';   // it will display that student.
+         list[i].style.display = 'block';   // it will display that student.
       } else {
         list[i].style.display = 'none';   //else it will hide the student.
       }
@@ -32,7 +32,7 @@ const appendPageLinks = (list) => {
    const ul = document.createElement('ul');  //created an unordered list.
    div.appendChild(ul);    //appended the newly created unordered list to the 'pagination' div.
    
-   for( i = 0; i < neededPages; i ++ ){   //created a for loop to loop through all the pages.
+   for( let i = 0; i < neededPages; i ++ ) {   //created a for loop to loop through all the pages.
       const pageNum = i + 1;  // created page buttons. So the page numbers start at 1 not 0 we add 1 to every itteration.
       const li = document.createElement('li');  //created a list element.
       const a = document.createElement('a'); //created an anchor element.
@@ -45,19 +45,17 @@ const appendPageLinks = (list) => {
       
       for (let i = 0; i < anchorTag.length; i++){  // created a loop to give all anchor tags an event listener.
          anchorTag[i].addEventListener('click', (e) => { //assign an click even listener to each anchor tag.
-           const pageNum = e.target.textContent;   // put the event.target and its textContent in a constant called pageNum(differnt scope from previous pageNum)
-      
-           for (let i = 0; i < anchorTag.length ;i++) {  
+            const pageNum = e.target.textContent; // get the event targets text content and set it to a constant
             
-            if( anchorTag.className === "active") { 
-
-               pageNum.classList.remove("active"); 
+            for (let i = 0; i < anchorTag.length ; i++) {  //loop through the list of anchor elements.
+               
+               anchorTag[i].classList.remove("active");  //remove the active class from anchor elements.
             }
-              pageNum.className = "active";    
-          }
-          
-          showPage(studentList,pageNum);    //the showpage function is called again inside the event listener with this studentList and the pageNum
-         });                               //the pageNum parameter will now show the page number that is clicked on.
+               e.target.classList.add("active"); //add the active class to the anchor element that was clicked
+            
+            showPage(studentList, pageNum);  // call the showPage function and pass it the student list and the event targets text content.
+                 
+         });                               
       }
       
    }
@@ -65,14 +63,3 @@ const appendPageLinks = (list) => {
 }
 showPage(studentList,1);   // we call the showPage function with the student list and paramenter of 1 so the first page is initially displayed. 
 appendPageLinks(studentList);    //finally we call our appendPageLinks function with the studentList paramenter.  
-//fun fact because the functions are on the global scope and so are paraments (the student constant) the order we call the functions in doesn't matter.
-   
-      
-
-
-                 
-
-
-
-
-
