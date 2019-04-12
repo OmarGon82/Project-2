@@ -2,19 +2,27 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
-const headerDiv = document.getElementsByClassName('page-header cf');
+const headerDiv = document.querySelector('.page-header.cf');
 const studentDiv = document.createElement('div');
 studentDiv.className = "student-search";
-headerDiv[0].appendChild(studentDiv);
+headerDiv.appendChild(studentDiv);
 const input = document.createElement("input");
-input.setAttribute("placeholder","Search for students..."); 
+input.setAttribute("placeholder","Search for students...");
+
 studentDiv.appendChild(input);
 const button = document.createElement('button');
 button.textContent = 'search';
 studentDiv.appendChild(button);
 
+button.addEventListener('click', (e) => {
+   const text = input.value
+   const searchName = [];
+   searchName.push(text);
+   input.value = '';
+   console.log(searchName);
+});
 
-   
+
 
 
 const studentList = document.getElementsByClassName("student-item cf");    //made a const to hold an HTML collection.
