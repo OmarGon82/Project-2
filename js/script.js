@@ -7,20 +7,26 @@ const studentDiv = document.createElement('div');
 studentDiv.className = "student-search";
 headerDiv.appendChild(studentDiv);
 const input = document.createElement("input");
-input.setAttribute("placeholder","Search for students...");
 
+input.setAttribute("placeholder","Search for students...");
 studentDiv.appendChild(input);
 const button = document.createElement('button');
 button.textContent = 'search';
 studentDiv.appendChild(button);
+const searchName = [];
 
 button.addEventListener('click', (e) => {
    const text = input.value
-   const searchName = [];
    searchName.push(text);
    input.value = '';
-   console.log(searchName);
+   console.log(text);
+})
+input.addEventListener('keyup', (e) => {
+   const text = input.value
+   searchName.push(text);
+   input.value = '';
 });
+   
 
 
 
