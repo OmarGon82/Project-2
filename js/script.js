@@ -18,9 +18,7 @@ studentDiv.appendChild(input);
 const button = document.createElement('button');
 button.textContent = 'search';
 studentDiv.appendChild(button);
-// const searchName = [];
-// const existingNames = [].slice.call(studentList);
-// console.log(existingNames);
+
 
 input.addEventListener('keyup', filterNames);
 function filterNames() {
