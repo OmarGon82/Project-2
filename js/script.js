@@ -19,13 +19,13 @@ button.addEventListener('click', (e) => {
    const text = input.value
    searchName.push(text);
    input.value = '';
-   console.log(text);
+   console.log(searchName);
 })
-input.addEventListener('keyup', (e) => {
-   const text = input.value
-   searchName.push(text);
-   input.value = '';
-});
+// input.addEventListener('keyup', (e) => {
+//    const text = input.value
+//    searchName.push(text);
+//    input.value = '';
+// });
    
 
 
