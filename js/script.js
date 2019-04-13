@@ -20,7 +20,7 @@ button.textContent = 'search';
 studentDiv.appendChild(button);
 
 
-input.addEventListener('keyup', filterNames);
+
 function filterNames() {
    let filterValue = document.getElementById('input').value;
    let ul = document.getElementById('names');
@@ -35,6 +35,11 @@ function filterNames() {
       }
    }
 }
+
+input.addEventListener('keyup', filterNames); 
+button.addEventListener('click', filterNames);
+
+
 
 
 
