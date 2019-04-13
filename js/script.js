@@ -2,37 +2,53 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
+const studentList = document.getElementsByClassName("student-item cf");    //made a const to hold an HTML collection.
+const studentsPerPage = 10;      //made constant to hold how many students I want to display per page.
 const headerDiv = document.querySelector('.page-header.cf');
 const studentDiv = document.createElement('div');
 studentDiv.className = "student-search";
 headerDiv.appendChild(studentDiv);
 const input = document.createElement("input");
-
+input.setAttribute("type","text");
+input.setAttribute("onkeyup","searchFunction");
 input.setAttribute("placeholder","Search for students...");
 studentDiv.appendChild(input);
 const button = document.createElement('button');
 button.textContent = 'search';
 studentDiv.appendChild(button);
-const searchName = [];
+// const searchName = [];
+// const existingNames = [].slice.call(studentList);
+// console.log(existingNames);
 
-button.addEventListener('click', (e) => {
-   const text = input.value
-   searchName.push(text);
-   input.value = '';
-   console.log(searchName);
-})
-input.addEventListener('keyup', (e) => {
-   const text = input.value
-   searchName.push(text);
-   input.value = '';
-});
-   
+function searchFunction() {
+   const input = document.querySelector('input');
+   const filter = input.value;
+   const ul = document.querySelector("ul");
+   const li = ul.getElementsByTagName("li");
+
+   for (i = 0; i < li.length; i++) {
+      const h3 = li[i].getElementsByTagName('h3')[0];
+      const textValue = h3.textContent || h3.innerText;
+      if (textValue.indexOf(filter) > -1) {
+         li[i].style.display = "";
+      } else {
+         li[i].style.display = "none";
+      }
+   }
+}
 
 
 
 
-const studentList = document.getElementsByClassName("student-item cf");    //made a const to hold an HTML collection.
-const studentsPerPage = 10;      //made constant to hold how many students I want to display per page.
+
+// button.addEventListener('click', (e) => {
+//    const text = input.value
+//    const found = existingNames.some(r=> searchName.includes(r))
+//    searchName.push(text);
+//    input.value = '';
+//    console.log(searchName);
+
+// })
 
 //created a funciton that will display the students on the page. It takes two parameters.
 const showPage = (list, page) => {
@@ -41,7 +57,7 @@ const showPage = (list, page) => {
    studentList.display = 'none';    //hide all students at the start
    for(let i = 0; i < list.length; i ++) {   //created a loop for this parameter(it will be the studentList const)
       if(i >= startIndex && i <= endIndex) { // if the students index  is between the start and end index
-         list[i].style.display = 'block';   // it will display that student.
+         list[i].style.display = '';   // it will display that student.
       } else {
         list[i].style.display = 'none';   //else it will hide the student.
       }
