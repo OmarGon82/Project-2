@@ -18,20 +18,19 @@ studentDiv.appendChild(input);
 const button = document.createElement('button');
 button.textContent = 'search';
 studentDiv.appendChild(button);
-
 // const searchName = [];
 // const existingNames = [].slice.call(studentList);
 // console.log(existingNames);
 
 input.addEventListener('keyup', filterNames);
 function filterNames() {
-   let filterValue = document.getElementById('input').value.toUpperCase();
+   let filterValue = document.getElementById('input').value;
    let ul = document.getElementById('names');
-   let li = ul.querySelectorAll('li.student-item cf');
+   let li = ul.querySelectorAll('li.student-item');
    
    for(let i = 0; i < li.length; i++) {
       let h3 = li[i].getElementsByTagName('h3')[0];
-      if (h3.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+      if (h3.innerHTML.indexOf(filterValue) > -1) {
          li[i].style.display = '';
       } else { 
          li[i].style.display = 'none';
