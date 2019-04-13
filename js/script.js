@@ -21,11 +21,11 @@ button.addEventListener('click', (e) => {
    input.value = '';
    console.log(searchName);
 })
-// input.addEventListener('keyup', (e) => {
-//    const text = input.value
-//    searchName.push(text);
-//    input.value = '';
-// });
+input.addEventListener('keyup', (e) => {
+   const text = input.value
+   searchName.push(text);
+   input.value = '';
+});
    
 
 
