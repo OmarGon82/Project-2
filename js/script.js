@@ -6,7 +6,6 @@ const studentList = document.getElementsByClassName("student-item cf");    //mad
 const studentsPerPage = 10;      //made constant to hold how many students I want to display per page.
 const ul = document.querySelector('ul');
 ul.setAttribute("id","names");
-
 const headerDiv = document.querySelector('.page-header.cf');
 const studentDiv = document.createElement('div');
 studentDiv.className = "student-search";
@@ -21,21 +20,21 @@ studentDiv.appendChild(button);
 
 
 
+
 function filterNames() {
-   let filterValue = document.getElementById('input').value;
+   let filterValue = document.getElementById('input').value.toUpperCase();
    let ul = document.getElementById('names');
    let li = ul.querySelectorAll('li.student-item');
    
    for(let i = 0; i < li.length; i++) {
       let h3 = li[i].getElementsByTagName('h3')[0];
-      if (h3.innerHTML.indexOf(filterValue) > -1) {
+      if (h3.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
          li[i].style.display = '';
       } else { 
          li[i].style.display = 'none';
-      }
-   }
+       }
+   } 
 }
-
 input.addEventListener('keyup', filterNames); 
 button.addEventListener('click', filterNames);
 
@@ -55,7 +54,7 @@ const showPage = (list, page) => {
         list[i].style.display = 'none';   //else it will hide the student.
       }
    }
-}
+};
 
 //created a function that will append the page links, it takes one parameter.It will be the studentList const.
 const appendPageLinks = (list) => {
