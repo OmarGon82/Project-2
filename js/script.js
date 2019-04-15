@@ -30,12 +30,12 @@ function filterNames() {
       let h3 = li[i].getElementsByTagName('h3')[0];
       if (h3.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
          li[i].style.display = '';
-         showPage(li,pageNum);
-      } else { 
+         showPage(filterValue,li);
+         appendPageLinks(li[i]);
          li[i].style.display = 'none';
-       }
+      } else { 
+      }
    } 
-
 }
          
 input.addEventListener('keyup', filterNames); 
