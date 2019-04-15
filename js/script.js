@@ -30,10 +30,10 @@ function filterNames() {
       let h3 = li[i].getElementsByTagName('h3')[0];
       if (h3.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
          li[i].style.display = '';
-         showPage(filterValue,li);
+         showPage(filterValue,pageNum);
          appendPageLinks(li[i]);
          li[i].style.display = 'none';
-      } else { 
+       } else { 
       }
    } 
 }
