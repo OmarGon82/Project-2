@@ -25,15 +25,14 @@ function filterNames() {
    let filterValue = document.getElementById('input').value.toUpperCase();
    let ul = document.getElementById('names');
    let li = ul.querySelectorAll('li.student-item');
-   let pageNum = li.length / studentsPerPage;
+    let pageNum = li.length / studentsPerPage;
    for(let i = 0; i < li.length; i++) {
       let h3 = li[i].getElementsByTagName('h3')[0];
       if (h3.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
          li[i].style.display = '';
-         showPage(filterValue,pageNum);
-         appendPageLinks(li[i]);
+      } else { 
          li[i].style.display = 'none';
-       } else { 
+      
       }
    } 
 }
@@ -100,3 +99,4 @@ const appendPageLinks = (list) => {
 }
 showPage(studentList,1);   // we call the showPage function with the student list and paramenter of 1 so the first page is initially displayed. 
 appendPageLinks(studentList);    //finally we call our appendPageLinks function with the studentList paramenter.  
+
