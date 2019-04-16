@@ -25,21 +25,22 @@ function filterNames() {
    let filterValue = document.getElementById('input').value.toUpperCase();
    let ul = document.getElementById('names');
    let li = ul.querySelectorAll('li.student-item');
-    let pageNum = li.length / studentsPerPage;
+   let pageNum = li.length / studentsPerPage;
    for(let i = 0; i < li.length; i++) {
       let h3 = li[i].getElementsByTagName('h3')[0];
       if (h3.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+         showPage(li[i],studentsPerPage);
+         appendPageLinks(filterNames);      
          li[i].style.display = '';
       } else { 
          li[i].style.display = 'none';
-      
       }
    } 
 }
          
+         
 input.addEventListener('keyup', filterNames); 
 button.addEventListener('click', filterNames);
-
 
 
 
