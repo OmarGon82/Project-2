@@ -17,26 +17,33 @@ studentDiv.appendChild(input);
 const button = document.createElement('button');
 button.textContent = 'search';
 studentDiv.appendChild(button);
-const searchResults = [];
+
 
 
 
 
 function filterNames() {
+   
    let filterValue = document.getElementById('input').value.toUpperCase();
    let ul = document.getElementById('names');
    let li = ul.querySelectorAll('li.student-item');
+   const searchResults = [];
    for(let i = 0; i < li.length; i++) {
       let h3 = li[i].getElementsByTagName('h3')[0];
-      if (h3.textContent.toUpperCase().includes(filterValue)) {
+      if (h3.innerHTML.toUpperCase().includes(filterValue)) {
          li[i].style.display = ''
-         searchResults.push(h3.textContent);
-         showPage(searchResults,1);
-         appendPageLinks(searchResults);
-      } else { 
+         searchResults.push(li[i]);
+         } 
+      if (searchResults.length === null) {
+           const noNamesDiv = document.createElement('div');
+           noNamesDiv.innerHTML = "Sorry there are no matches..."
+           const body = document.querySelector('body');
+           body.appendChild(noNamesDiv);
+         } else { 
          li[i].style.display = 'none';
       }
-   } 
+      showPage(searchResults,1);
+   }  appendPageLinks(searchResults);
 }
 
          
@@ -93,8 +100,6 @@ const appendPageLinks = (list) => {
                e.target.classList.add("active"); //add the active class to the anchor element that was clicked
             
             showPage(studentList, pageNum);  // call the showPage function and pass it the student list and the event targets text content.
-            console.log(pageNum)
-            console.log(studentList)     
          });                               
       }
       
