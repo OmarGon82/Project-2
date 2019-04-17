@@ -36,14 +36,16 @@ function filterNames() {
          } 
       if (searchResults.length === null) {
            const noNamesDiv = document.createElement('div');
-           noNamesDiv.innerHTML = "Sorry there are no matches..."
+           noNamesDiv.textContent = "Sorry there are no matches..."
            const body = document.querySelector('body');
            body.appendChild(noNamesDiv);
-         } else { 
+         } 
+      else { 
          li[i].style.display = 'none';
       }
       showPage(searchResults,1);
-   }  appendPageLinks(searchResults);
+   }  
+   appendPageLinks(searchResults);
 }
 
          
