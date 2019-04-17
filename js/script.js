@@ -41,6 +41,7 @@ function filterNames() {
       let h3 = li[i].getElementsByTagName('h3')[0];
       if (h3.innerHTML.toUpperCase().includes(filterValue)) {
          searchResults.push(li[i]);
+         console.log(searchResults);
          li[i].style.display = ''
          } 
       if(searchResults.length === 0) {
@@ -103,8 +104,8 @@ const appendPageLinks = (list) => {
             }
                e.target.classList.add("active"); //add the active class to the anchor element that was clicked
             
-            showPage(studentList, pageNum);  // call the showPage function and pass it the student list and the event targets text content.
-         });                               
+               showPage(list, pageNum);  // call the showPage function and pass it the student list and the event targets text content.
+            });                               
       }
       
    }
