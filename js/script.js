@@ -17,6 +17,7 @@ studentDiv.appendChild(input);
 const button = document.createElement('button');
 button.textContent = 'search';
 studentDiv.appendChild(button);
+const searchResults = [];
 
 
 
@@ -25,20 +26,21 @@ function filterNames() {
    let filterValue = document.getElementById('input').value.toUpperCase();
    let ul = document.getElementById('names');
    let li = ul.querySelectorAll('li.student-item');
-   let pageNum = li.length / studentsPerPage;
    for(let i = 0; i < li.length; i++) {
       let h3 = li[i].getElementsByTagName('h3')[0];
-      if (h3.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-         showPage(li[i],studentsPerPage);
-         appendPageLinks(filterNames);      
-         li[i].style.display = '';
+      if (h3.textContent.toUpperCase().includes(filterValue)) {
+         li[i].style.display = ''
+         searchResults.push(h3.textContent);
+         showPage(searchResults,1);
+         appendPageLinks(searchResults);
       } else { 
          li[i].style.display = 'none';
       }
    } 
 }
+
          
-         
+      
 input.addEventListener('keyup', filterNames); 
 button.addEventListener('click', filterNames);
 
@@ -91,7 +93,8 @@ const appendPageLinks = (list) => {
                e.target.classList.add("active"); //add the active class to the anchor element that was clicked
             
             showPage(studentList, pageNum);  // call the showPage function and pass it the student list and the event targets text content.
-                 
+            console.log(pageNum)
+            console.log(studentList)     
          });                               
       }
       
