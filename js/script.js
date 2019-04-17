@@ -17,13 +17,22 @@ studentDiv.appendChild(input);
 const button = document.createElement('button');
 button.textContent = 'search';
 studentDiv.appendChild(button);
+const pageDiv = document.querySelector('.page');   // selected the div with the page class.
+const div = document.createElement('div');      //created a new div element
+div.className = 'pagination';    //gave the newly created div a class of 'pagination'
+pageDiv.appendChild(div);     // appened the new div to the div with the page class. It is now nested in the mainDiv
 
 
-
+const noNamesDiv = document.createElement('div');
+noNamesDiv.textContent = "Sorry there are no matches..."
+const body = document.querySelector('body');
+body.appendChild(noNamesDiv);      
+noNamesDiv.style.display = 'none';
 
 
 function filterNames() {
-   
+   studentList.display = 'none'
+   document.getElementsByClassName("pagination").innerHTML = ' ';
    let filterValue = document.getElementById('input').value.toUpperCase();
    let ul = document.getElementById('names');
    let li = ul.querySelectorAll('li.student-item');
@@ -31,20 +40,17 @@ function filterNames() {
    for(let i = 0; i < li.length; i++) {
       let h3 = li[i].getElementsByTagName('h3')[0];
       if (h3.innerHTML.toUpperCase().includes(filterValue)) {
-         li[i].style.display = ''
          searchResults.push(li[i]);
+         console.log(searchResults);
+         // li[i].style.display = ''
          } 
-      if (searchResults.length === null) {
-           const noNamesDiv = document.createElement('div');
-           noNamesDiv.textContent = "Sorry there are no matches..."
-           const body = document.querySelector('body');
-           body.appendChild(noNamesDiv);
-         } 
-      else { 
-         li[i].style.display = 'none';
+      if(searchResults.length === 0) {
+         noNamesDiv.style.display = ''
+
       }
-      showPage(searchResults,1);
-   }  
+      
+      }  
+   showPage(searchResults,1);
    appendPageLinks(searchResults);
 }
 
@@ -72,11 +78,7 @@ const showPage = (list, page) => {
 
 //created a function that will append the page links, it takes one parameter.It will be the studentList const.
 const appendPageLinks = (list) => {
-   const neededPages = list.length / studentsPerPage;   // calculated how many pages need to be created.
-   const pageDiv = document.querySelector('.page');   // selected the div with the page class.
-   const div = document.createElement('div');      //created a new div element
-   div.className = 'pagination';    //gave the newly created div a class of 'pagination'
-   pageDiv.appendChild(div);     // appened the new div to the div with the page class. It is now nested in the mainDiv
+   const neededPages = list.length / studentsPerPage;   // calculated how many pages need to be  created.
    const ul = document.createElement('ul');  //created an unordered list.
    div.appendChild(ul);    //appended the newly created unordered list to the 'pagination' div.
    
