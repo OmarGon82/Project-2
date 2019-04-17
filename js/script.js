@@ -21,32 +21,32 @@ const pageDiv = document.querySelector('.page');   // selected the div with the 
 const div = document.createElement('div');      //created a new div element
 div.className = 'pagination';    //gave the newly created div a class of 'pagination'
 pageDiv.appendChild(div);     // appened the new div to the div with the page class. It is now nested in the mainDiv
-
+ 
 
 const noNamesDiv = document.createElement('div');
 noNamesDiv.textContent = "Sorry there are no matches..."
 const body = document.querySelector('body');
-body.appendChild(noNamesDiv);      
+pageDiv.appendChild(noNamesDiv);     
 noNamesDiv.style.display = 'none';
 
 
 function filterNames() {
-   studentList.display = 'none'
-   document.getElementsByClassName("pagination").innerHTML = ' ';
+   document.getElementsByClassName("pagination")[0].innerHTML = ' ';
    let filterValue = document.getElementById('input').value.toUpperCase();
    let ul = document.getElementById('names');
    let li = ul.querySelectorAll('li.student-item');
    const searchResults = [];
    for(let i = 0; i < li.length; i++) {
+      li[i].style.display = 'none';
       let h3 = li[i].getElementsByTagName('h3')[0];
       if (h3.innerHTML.toUpperCase().includes(filterValue)) {
          searchResults.push(li[i]);
-         console.log(searchResults);
-         // li[i].style.display = ''
+         li[i].style.display = ''
          } 
       if(searchResults.length === 0) {
          noNamesDiv.style.display = ''
-
+      } else {
+         noNamesDiv.style.display = 'none'
       }
       
       }  
